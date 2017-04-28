@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react'
+import connect from 'connect-alt'
 
+@connect(({ story: { collection } }) => ({ collection }))
 class Guides extends Component {
 
   static contextTypes = {

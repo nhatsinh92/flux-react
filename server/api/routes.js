@@ -1,8 +1,12 @@
 import { users } from './data.json'
+import { story } from './story.json'
 
 const simplifyUsers = (collection) => collection
   .map(({ user, seed }) => ({ ...user, seed }))
   .map(({ email, name, seed, picture }) => ({ email, name, seed, picture }))
+
+const getStory = (collection) => collection
+  .map(({ id, link, headline }) => ({ id, link, headline }))
 
 function routes(router) {
   router.get('/users', async (ctx) => {
@@ -18,6 +22,10 @@ function routes(router) {
     } else {
       ctx.body = result
     }
+  })
+
+  router.get('/guides', async (ctx) => {
+    ctx.body = getStory(story);
   })
 }
 
